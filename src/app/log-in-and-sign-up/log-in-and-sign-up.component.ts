@@ -5,11 +5,14 @@ import {
   Component,
   ContentChild,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   OnInit,
   Output,
   QueryList,
   ViewChild,
+  ViewChildren,
+  Renderer2,
 } from '@angular/core';
 import { MessageComponent } from '../message/message.component';
 import { RememberMeComponent } from '../remember-me/remember-me.component';
@@ -23,22 +26,39 @@ export class LogInAndSignUpComponent
   implements OnInit, AfterContentInit, AfterViewInit
 {
   @Output() emitValueForm = new EventEmitter<any>();
-  @ViewChild(MessageComponent) message!: MessageComponent;
   @ContentChild(RememberMeComponent) rememberMe!: RememberMeComponent;
-  // @ContentChildren(RememberMeComponent)
-  // rememberMe!: QueryList<RememberMeComponent>;
+  @ViewChild('email') email!: ElementRef;
+  @ViewChild('reset') reset!: ElementRef;
+  @ViewChild(MessageComponent) message!: MessageComponent;
+  // @ViewChildren(MessageComponent) messages!: QueryList<MessageComponent>;
   showMessage: boolean = false;
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private renderer: Renderer2
+  ) {}
 
   ngAfterViewInit(): void {
-    this.message.days = 50;
-    this.changeDetectorRef.detectChanges();
-    // setTimeout(() => {
-    //   this.message.days = 30;
-    // }, 1000);
+    if (this.email) {
+      this.renderer.setAttribute(
+        this.email.nativeElement,
+        'placeholder',
+        'put your email here'
+      );
+      this.renderer.addClass(this.email.nativeElement, 'email');
+      // this.email.nativeElement.focus();
+      // this.email.nativeElement.setAttribute('placeholder', 'Put your email');
+      // this.email.nativeElement.classList.add('email');
+      this.email.nativeElement.focus();
+    }
+    if (this.reset) {
+      console.log(this.reset.nativeElement);
+    }
   }
 
   ngAfterContentInit(): void {
+    if (this.message) {
+      console.log('ViewChild', this.message);
+    }
     if (this.rememberMe) {
       this.rememberMe.isCheckedEventEmitter.subscribe((isChecked) => {
         this.showMessage = isChecked;

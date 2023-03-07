@@ -1,13 +1,5 @@
 <div class="title">Angular Pro course</div>
 <div class="container">
-  <app-log-in-and-sign-up (emitValueForm)="loginUser($event)">
-    <h3>Login in :</h3>
-    <app-remember-me></app-remember-me>
-    <!-- <app-remember-me></app-remember-me>
-    <app-remember-me></app-remember-me>
-    <app-remember-me></app-remember-me> -->
-    <button type="submit">Log in</button>
-  </app-log-in-and-sign-up>
   <app-log-in-and-sign-up (emitValueForm)="createUser($event)">
     <h3>Sign up:</h3>
     <button type="submit">Create account</button>

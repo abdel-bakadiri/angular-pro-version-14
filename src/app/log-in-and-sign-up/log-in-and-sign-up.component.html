@@ -3,18 +3,16 @@
   <form (ngSubmit)="onNgForm(form.value)" #form="ngForm">
     <label>
       Email address
-      <input type="email" name="email" ngModel />
+      <input type="email" name="email" ngModel id="email" #email />
     </label>
     <label>
       Password
       <input type="password" name="password" ngModel />
     </label>
     <ng-content select="app-remember-me"></ng-content>
-    <!-- <div *ngIf="showMessage" class="message-keep-password">
-      You are 30 days to keep your login / password
-    </div> -->
     <app-message></app-message>
     <ng-content select="button"></ng-content>
+    <button style="margin-left: 10px" type="reset" #reset>Reset</button>
   </form>
 </div>
 `
