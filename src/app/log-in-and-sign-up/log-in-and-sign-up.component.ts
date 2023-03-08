@@ -13,6 +13,7 @@ import {
   ViewChild,
   ViewChildren,
   Renderer2,
+  Input,
 } from '@angular/core';
 import { MessageComponent } from '../message/message.component';
 import { RememberMeComponent } from '../remember-me/remember-me.component';
@@ -25,50 +26,19 @@ import { RememberMeComponent } from '../remember-me/remember-me.component';
 export class LogInAndSignUpComponent
   implements OnInit, AfterContentInit, AfterViewInit
 {
+  @Input() title!: string;
   @Output() emitValueForm = new EventEmitter<any>();
-  @ContentChild(RememberMeComponent) rememberMe!: RememberMeComponent;
-  @ViewChild('email') email!: ElementRef;
-  @ViewChild('reset') reset!: ElementRef;
-  @ViewChild(MessageComponent) message!: MessageComponent;
-  // @ViewChildren(MessageComponent) messages!: QueryList<MessageComponent>;
-  showMessage: boolean = false;
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef,
-    private renderer: Renderer2
-  ) {}
 
-  ngAfterViewInit(): void {
-    if (this.email) {
-      this.renderer.setAttribute(
-        this.email.nativeElement,
-        'placeholder',
-        'put your email here'
-      );
-      this.renderer.addClass(this.email.nativeElement, 'email');
-      // this.email.nativeElement.focus();
-      // this.email.nativeElement.setAttribute('placeholder', 'Put your email');
-      // this.email.nativeElement.classList.add('email');
-      this.email.nativeElement.focus();
-    }
-    if (this.reset) {
-      console.log(this.reset.nativeElement);
-    }
-  }
+  constructor() {}
 
-  ngAfterContentInit(): void {
-    if (this.message) {
-      console.log('ViewChild', this.message);
-    }
-    if (this.rememberMe) {
-      this.rememberMe.isCheckedEventEmitter.subscribe((isChecked) => {
-        this.showMessage = isChecked;
-      });
-    }
-  }
+  ngAfterViewInit(): void {}
+
+  ngAfterContentInit(): void {}
 
   ngOnInit(): void {}
 
   onNgForm(formValue: any) {
+    console.log(formValue);
     this.emitValueForm.emit(formValue);
   }
 }

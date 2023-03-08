@@ -1,5 +1,6 @@
 <div>
   <ng-content select="h3"></ng-content>
+  <p>{{ title }}</p>
   <form (ngSubmit)="onNgForm(form.value)" #form="ngForm">
     <label>
       Email address
@@ -9,9 +10,7 @@
       Password
       <input type="password" name="password" ngModel />
     </label>
-    <ng-content select="app-remember-me"></ng-content>
-    <app-message></app-message>
-    <ng-content select="button"></ng-content>
+    <button type="submit">Valider</button>
     <button style="margin-left: 10px" type="reset" #reset>Reset</button>
   </form>
 </div>
