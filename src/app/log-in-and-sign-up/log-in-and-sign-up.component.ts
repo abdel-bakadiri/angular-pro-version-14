@@ -27,7 +27,7 @@ export class LogInAndSignUpComponent
   implements OnInit, AfterContentInit, AfterViewInit
 {
   @Input() title!: string;
-  @Output() emitValueForm = new EventEmitter<any>();
+  emitValueForm = new EventEmitter<any>();
 
   constructor() {}
 
@@ -38,7 +38,6 @@ export class LogInAndSignUpComponent
   ngOnInit(): void {}
 
   onNgForm(formValue: any) {
-    console.log(formValue);
     this.emitValueForm.emit(formValue);
   }
 }
