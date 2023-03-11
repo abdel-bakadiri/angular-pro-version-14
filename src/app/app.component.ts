@@ -19,4 +19,5 @@ import { LogInAndSignUpComponent } from './log-in-and-sign-up/log-in-and-sign-up
 })
 export class AppComponent {
   title = 'Angular Pro course';
+  context = { $implicit: 'abdel', location: 'Paris' };
 }
