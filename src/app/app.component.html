@@ -1,10 +1,6 @@
 <div class="title container">{{ title }}</div>
 <div class="container">
-  <ng-container
-    [ngTemplateOutlet]="outlet"
-    [ngTemplateOutletContext]="{ $implicit: 'abdel', location: 'Paris' }"
-  ></ng-container>
-  <ng-template #outlet let-name let-location="location">
-    I'm {{ name }} living in {{ location }}</ng-template
-  >
+  <example-one></example-one>
+  <example-two></example-two>
+  <example-three></example-three>
 </div>
