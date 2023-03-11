@@ -1,6 +1,10 @@
 <div class="title container">{{ title }}</div>
+<div class="conainer">
+  <button (click)="handleUpdateName()">Update name</button>
+  <button (click)="handleAddProperty()">Add property</button>
+  <button (click)="handleImmutableObject()">Immutable object</button>
+</div>
 <div class="container">
-  <example-one></example-one>
-  <example-two></example-two>
-  <example-three></example-three>
+  <one-change-detection [user]="user"></one-change-detection>
+  <two-change-detection [user]="user"></two-change-detection>
 </div>

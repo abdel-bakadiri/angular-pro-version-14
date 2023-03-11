@@ -20,4 +20,23 @@ import { LogInAndSignUpComponent } from './log-in-and-sign-up/log-in-and-sign-up
 export class AppComponent {
   title = 'Angular Pro course';
   context = { $implicit: 'abdel', location: 'Paris' };
+  user: any = {
+    name: 'abdel',
+    location: 'Paris',
+  };
+
+  handleUpdateName() {
+    this.user.name = 'abdou';
+  }
+
+  handleAddProperty() {
+    this.user.email = 'contact@gmail.com';
+  }
+
+  handleImmutableObject() {
+    this.user = {
+      name: 'Abdelouhab',
+      location: 'Rabat',
+    };
+  }
 }
