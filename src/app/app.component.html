@@ -1,9 +1,5 @@
 <div class="title container">{{ title }}</div>
 <div class="container">
-  <div style="border: red solid 1px">
-    <ng-container #placeholder></ng-container>
-  </div>
-  <ng-template #loon let-name let-location="location">
-    {{ name }}: {{ location }}</ng-template
-  >
+  <ng-container [ngTemplateOutlet]="outlet"></ng-container>
+  <ng-template #outlet> HELLO I WILL BE AN EXPERT IN ANGULAR</ng-template>
 </div>
